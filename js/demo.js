@@ -229,12 +229,11 @@
             this.DOM.navCtrl.addEventListener('click', navClickFn);
 
             // Clicking a link inside the TOC to go to a specific page
-            const tocItemClickFn = (ev) => {
-                ev.preventDefault();
-                this.navigate(this.DOM.tocItems.indexOf(ev.target));
-            };
             this.DOM.tocItems.forEach((tocItem, pos) => {
-                tocItem.addEventListener('click', tocItemClickFn);
+                tocItem.addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    this.navigate(pos);
+                });
             });
         }
         // This function is executed at the middle point of the turning pages animation.
